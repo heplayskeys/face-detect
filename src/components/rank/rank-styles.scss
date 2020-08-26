@@ -1,0 +1,9 @@
+$breakpoint-tablet: 768px;
+
+.rank-container {
+	width: 30%;
+
+	@media screen and (max-width: $breakpoint-tablet) {
+		width: 90%;
+	}
+}

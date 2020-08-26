@@ -1,0 +1,21 @@
+.recent-grabs-container {
+	width: 100%;
+	position: absolute;
+	bottom: 100px;
+	display: grid;
+	grid-template-columns: repeat(5, auto);
+
+	.recent-grab {
+		margin: 0 auto;
+		width: 100px;
+		height: 100px;
+		object-fit: cover;
+		opacity: 0.5;
+		transition: all 0.3s;
+
+		&:hover {
+			opacity: 1;
+			transform: scale(1.2);
+		}
+	}
+}

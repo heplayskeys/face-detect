@@ -1,0 +1,12 @@
+.form {
+	width: 700px;
+}
+
+.mybg {
+	background: rgb(2, 142, 191);
+	font-weight: bold;
+
+	&:active {
+		font-weight: normal;
+	}
+}

@@ -1,0 +1,17 @@
+$breakpoint-tablet: 768px;
+
+.Tilt {
+	transform-style: preserve-3d;
+	background: linear-gradient(to right, rgb(2, 142, 191), rgb(191, 240, 199));
+
+	.Tilt-inner {
+		transform: translateZ(30px);
+	}
+}
+
+.face-detect-logo {
+	@media screen and (max-width: $breakpoint-tablet) {
+		display: flex;
+		justify-content: center;
+	}
+}
