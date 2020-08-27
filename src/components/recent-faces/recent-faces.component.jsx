@@ -1,7 +1,7 @@
 import React from 'react';
 import './recent-faces.styles.scss';
 
-const RecentFaces = ({ recentGrabs, setInput }) => {
+const RecentFaces = ({ recentGrabs, setInput, route }) => {
 	const grabs = new Set();
 
 	for (let i = recentGrabs.length - 1; i >= 0; i--) {
@@ -20,7 +20,7 @@ const RecentFaces = ({ recentGrabs, setInput }) => {
 		setInput(e.target.src);
 	};
 
-	return (
+	return route === 'home' ? (
 		<div className='recent-grabs-container'>
 			<h3 className='tr'>{'Recent Grabs:'}</h3>
 			{[...grabs].map((grab, idx) => (
@@ -33,7 +33,7 @@ const RecentFaces = ({ recentGrabs, setInput }) => {
 				/>
 			))}
 		</div>
-	);
+	) : null;
 };
 
 export default RecentFaces;

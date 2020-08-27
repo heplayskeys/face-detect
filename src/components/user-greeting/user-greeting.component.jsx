@@ -1,11 +1,9 @@
 import React from 'react';
 
-const UserGreeting = props => {
-	const { user } = props;
-
+const UserGreeting = ({ name }) => {
 	return (
 		<div>
-			<h1>Hello, {user}!</h1>
+			<h1>Hello, {name}!</h1>
 		</div>
 	);
 };

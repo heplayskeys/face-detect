@@ -7,6 +7,8 @@ import Rank from './components/rank/rank.component.jsx';
 import ImageLinkForm from './components/image-link-form/image-link-form.component.jsx';
 import FaceDetect from './components/face-detect/face-detect.component.jsx';
 import RecentFaces from './components/recent-faces/recent-faces.component.jsx';
+import SignIn from './components/sign-in/sign-in.component.jsx';
+import Register from './components/register/register.component.jsx';
 
 import Particles from 'react-particles-js';
 import particlesOptions from './particleOptions.json';
@@ -19,6 +21,8 @@ function App() {
 	const [imageURL, setURL] = useState('');
 	const [faces, setFaces] = useState([]);
 	const [recentGrabs, setRecents] = useState([]);
+	const [route, setRoute] = useState('signin');
+	const [activeUser, setActiveUser] = useState({});
 
 	const app = new Clarifai.App({
 		apiKey: API_KEY
@@ -57,30 +61,57 @@ function App() {
 			console.log('Oops!', err);
 		}
 		setInput('');
+
+		const resp = await fetch('http://localhost:3001/image', {
+			method: 'PUT',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				id: activeUser.id
+			})
+		});
+
+		const userEntries = await resp.json();
+		setActiveUser({ ...activeUser, entries: userEntries });
+	};
+
+	const setPage = () => {
+		if (route === 'register') {
+			return <Register onRouteChange={setRoute} />;
+		} else {
+			return <SignIn onRouteChange={setRoute} setActiveUser={setActiveUser} />;
+		}
 	};
 
 	return (
 		<div className='App'>
 			<Particles className='particles' params={particlesOptions} />
-			<Navigation />
-			<Logo />
-			<UserGreeting user={'Steven'} />
-			<Rank />
-			<ImageLinkForm
-				input={input}
-				handleInput={handleInput}
-				handleSubmit={handleSubmit}
-				numFaces={faces.length}
-				recentGrabs={recentGrabs}
-			/>
-			<FaceDetect imageURL={imageURL} faces={faces} />
+			<Navigation route={route} onRouteChange={setRoute} />
+			{route !== 'home' ? (
+				setPage()
+			) : (
+				<div>
+					<Logo />
+					<UserGreeting name={activeUser.name} />
+					<Rank entries={activeUser.entries} />
+					<ImageLinkForm
+						input={input}
+						handleInput={handleInput}
+						handleSubmit={handleSubmit}
+						numFaces={faces.length}
+						recentGrabs={recentGrabs}
+					/>
+					<FaceDetect imageURL={imageURL} faces={faces} />
+				</div>
+			)}
 			{recentGrabs.length ? (
-				<RecentFaces recentGrabs={recentGrabs} setInput={setInput} />
+				<RecentFaces
+					recentGrabs={recentGrabs}
+					setInput={setInput}
+					route={route}
+				/>
 			) : null}
 		</div>
 	);
 }
 
 export default App;
-
-// https://cdn.travelpulse.com/images/99999999-9999-9999-9999-999999999999/aa6644a7-d3b4-8673-5851-f6fb07743484/630x355.jpg
