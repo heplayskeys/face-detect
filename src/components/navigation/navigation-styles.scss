@@ -2,7 +2,6 @@ $breakpoint-phone: 450px;
 
 .sign-out {
 	@media screen and (max-width: $breakpoint-phone) {
-		position: fixed;
 		font-size: 1em;
 		background-color: hsla(0, 0%, 100%, 0.4);
 		border-top-left-radius: 0.5rem;
