@@ -1,5 +1,11 @@
+$breakpoint-tablet: 768px;
+
 #input-container {
 	justify-content: space-around;
+
+	@media screen and (max-width: $breakpoint-tablet) {
+		width: 100%;
+	}
 }
 
 .form {

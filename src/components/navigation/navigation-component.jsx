@@ -27,7 +27,7 @@ const Navigation = ({ route, setState, resetApplication }) => {
 	return (
 		<nav className='flex justify-end'>
 			<p
-				className='f3 link dim black underline pa3 pointer'
+				className='sign-out f3 link dim black underline pa3 pointer'
 				onClick={() =>
 					setState(prevState => ({ ...prevState, route: getRoute() }))
 				}

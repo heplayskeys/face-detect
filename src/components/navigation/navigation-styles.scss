@@ -1,0 +1,8 @@
+$breakpoint-phone: 450px;
+
+.sign-out {
+	@media screen and (max-width: $breakpoint-phone) {
+		position: fixed;
+		font-size: 1em;
+	}
+}
