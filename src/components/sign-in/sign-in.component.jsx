@@ -1,7 +1,7 @@
 import React from 'react';
 import './sign-in.styles.scss';
 
-const SignIn = ({ onRouteChange, setActiveUser }) => {
+const SignIn = ({ URL, setState }) => {
 	const handleSubmit = async () => {
 		const email = document.querySelector('#email-address').value;
 		const password = document.querySelector('#password').value;
@@ -11,7 +11,7 @@ const SignIn = ({ onRouteChange, setActiveUser }) => {
 			return;
 		}
 
-		const resp = await fetch('http://localhost:3001/signin', {
+		const resp = await fetch(`${URL}/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -23,8 +23,7 @@ const SignIn = ({ onRouteChange, setActiveUser }) => {
 		const activeUser = await resp.json();
 
 		if (resp.status === 200) {
-			setActiveUser(activeUser);
-			onRouteChange('home');
+			setState(prevState => ({ ...prevState, activeUser, route: 'home' }));
 		} else {
 			console.error('Invalid email and password');
 		}
@@ -69,7 +68,9 @@ const SignIn = ({ onRouteChange, setActiveUser }) => {
 						<div className='lh-copy mt3'>
 							<p
 								className='f5 link black db bolder mb1 pointer'
-								onClick={() => onRouteChange('register')}
+								onClick={() =>
+									setState(prevState => ({ ...prevState, route: 'register' }))
+								}
 							>
 								Register
 							</p>

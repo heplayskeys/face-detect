@@ -1,7 +1,7 @@
 import React from 'react';
 import './register.styles.scss';
 
-const Register = ({ onRouteChange }) => {
+const Register = ({ URL, setState }) => {
 	const handleSubmit = async () => {
 		const name = document.querySelector('#name').value;
 		const email = document.querySelector('#email-address').value;
@@ -18,7 +18,7 @@ const Register = ({ onRouteChange }) => {
 			return;
 		}
 
-		const resp = await fetch('http://localhost:3001/register', {
+		const resp = await fetch(`${URL}/register`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -31,9 +31,10 @@ const Register = ({ onRouteChange }) => {
 
 		if (resp.status === 200) {
 			alert('User created. Please sign in.');
-			onRouteChange('signin');
+			setState(prevState => ({ ...prevState, route: 'signin' }));
 		} else {
-			console.error('Error registering user');
+			const errorMsg = await resp.json();
+			console.error('Error:', errorMsg);
 		}
 	};
 	return (
@@ -98,7 +99,9 @@ const Register = ({ onRouteChange }) => {
 						<div className='lh-copy mt3'>
 							<p
 								className='f5 link black db bolder pointer'
-								onClick={() => onRouteChange('signin')}
+								onClick={() =>
+									setState(prevState => ({ ...prevState, route: 'signin' }))
+								}
 							>
 								{'<-- Back'}
 							</p>

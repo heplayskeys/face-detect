@@ -1,7 +1,7 @@
 import React from 'react';
 import './recent-faces.styles.scss';
 
-const RecentFaces = ({ recentGrabs, setInput, route }) => {
+const RecentFaces = ({ recentGrabs, setState, route }) => {
 	const grabs = new Set();
 
 	for (let i = recentGrabs.length - 1; i >= 0; i--) {
@@ -17,7 +17,8 @@ const RecentFaces = ({ recentGrabs, setInput, route }) => {
 	}
 
 	const handleClick = e => {
-		setInput(e.target.src);
+		const src = e.target.src;
+		setState(prevState => ({ ...prevState, input: src }));
 	};
 
 	return route === 'home' ? (

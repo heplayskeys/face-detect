@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Clarifai from 'clarifai';
+import React, { useState, useEffect } from 'react';
 import Navigation from './components/navigation/navigation-component.jsx';
 import Logo from './components/logo/logo.component.jsx';
 import UserGreeting from './components/user-greeting/user-greeting.component.jsx';
@@ -14,22 +13,32 @@ import Particles from 'react-particles-js';
 import particlesOptions from './particleOptions.json';
 import './App.scss';
 
-const API_KEY = '3182a39c94ce4db19bb43ddec297b667';
+const URL = 'https://boiling-brushlands-70070.herokuapp.com';
 
 function App() {
-	const [input, setInput] = useState('');
-	const [imageURL, setURL] = useState('');
-	const [faces, setFaces] = useState([]);
-	const [recentGrabs, setRecents] = useState([]);
-	const [route, setRoute] = useState('signin');
-	const [activeUser, setActiveUser] = useState({});
+	const initialState = {
+		input: '',
+		imageURL: '',
+		faces: [],
+		recentGrabs: [],
+		route: 'signin',
+		activeUser: {}
+	};
 
-	const app = new Clarifai.App({
-		apiKey: API_KEY
+	useEffect(() => {
+		if (route === 'signout') {
+			resetApplication();
+		}
 	});
 
+	const [
+		{ input, imageURL, faces, recentGrabs, route, activeUser },
+		setState
+	] = useState(initialState);
+
 	const handleInput = e => {
-		setInput(e.target.value);
+		const userInput = e.target.value;
+		setState(prevState => ({ ...prevState, input: userInput }));
 	};
 
 	const handleSubmit = async () => {
@@ -38,31 +47,38 @@ function App() {
 		}
 
 		if (faces.length) {
-			setFaces([]);
-			setURL('');
+			setState(prevState => ({ ...prevState, faces: [], imageURL: '' }));
 		}
 
-		setURL(input);
-		setRecents([...recentGrabs, input]);
+		setState(prevState => ({
+			...prevState,
+			imageURL: input,
+			recentGrabs: [...recentGrabs, input]
+		}));
 
 		try {
-			const request = await app.models.predict(
-				Clarifai.FACE_DETECT_MODEL,
-				input
-			);
+			const apiCall = await fetch(`${URL}/imageurl`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					input
+				})
+			});
+			const request = await apiCall.json();
 			const detectedFaces = request.outputs[0].data.regions.map(region => {
 				const {
 					region_info: { bounding_box }
 				} = region;
 				return { ...bounding_box };
 			});
-			setFaces(detectedFaces);
+			setState(prevState => ({ ...prevState, faces: detectedFaces }));
 		} catch (err) {
 			console.log('Oops!', err);
 		}
-		setInput('');
 
-		const resp = await fetch('http://localhost:3001/image', {
+		setState(prevState => ({ ...prevState, input: '' }));
+
+		const resp = await fetch(`${URL}/image`, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -71,21 +87,32 @@ function App() {
 		});
 
 		const userEntries = await resp.json();
-		setActiveUser({ ...activeUser, entries: userEntries });
+		setState(prevState => ({
+			...prevState,
+			activeUser: { ...activeUser, entries: userEntries }
+		}));
 	};
 
 	const setPage = () => {
 		if (route === 'register') {
-			return <Register onRouteChange={setRoute} />;
+			return <Register URL={URL} setState={setState} />;
 		} else {
-			return <SignIn onRouteChange={setRoute} setActiveUser={setActiveUser} />;
+			return <SignIn URL={URL} setState={setState} />;
 		}
+	};
+
+	const resetApplication = () => {
+		setState({ ...initialState });
 	};
 
 	return (
 		<div className='App'>
 			<Particles className='particles' params={particlesOptions} />
-			<Navigation route={route} onRouteChange={setRoute} />
+			<Navigation
+				route={route}
+				setState={setState}
+				resetApplication={resetApplication}
+			/>
 			{route !== 'home' ? (
 				setPage()
 			) : (
@@ -99,6 +126,7 @@ function App() {
 						handleSubmit={handleSubmit}
 						numFaces={faces.length}
 						recentGrabs={recentGrabs}
+						setState={setState}
 					/>
 					<FaceDetect imageURL={imageURL} faces={faces} />
 				</div>
@@ -106,7 +134,7 @@ function App() {
 			{recentGrabs.length ? (
 				<RecentFaces
 					recentGrabs={recentGrabs}
-					setInput={setInput}
+					setState={setState}
 					route={route}
 				/>
 			) : null}
