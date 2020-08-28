@@ -1,0 +1,9 @@
+$breakpoint-phone: 450px;
+
+article {
+	@media screen and (max-width: $breakpoint-phone) {
+		border: none;
+		background: none;
+		box-shadow: none;
+	}
+}

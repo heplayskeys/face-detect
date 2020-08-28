@@ -1,6 +1,16 @@
+$breakpoint-phone: 450px;
+
 .bolder {
 	&:hover {
 		font-weight: bold;
 		color: #000;
+	}
+}
+
+article {
+	@media screen and (max-width: $breakpoint-phone) {
+		border: none;
+		background: none;
+		box-shadow: none;
 	}
 }

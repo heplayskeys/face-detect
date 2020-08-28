@@ -1,4 +1,5 @@
 $breakpoint-tablet: 768px;
+$breakpoint-phone: 450px;
 
 .Tilt {
 	transform-style: preserve-3d;
@@ -13,5 +14,9 @@ $breakpoint-tablet: 768px;
 	@media screen and (max-width: $breakpoint-tablet) {
 		display: flex;
 		justify-content: center;
+	}
+
+	@media screen and (max-width: $breakpoint-phone) {
+		margin-top: 10px;
 	}
 }
