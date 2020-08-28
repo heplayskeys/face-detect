@@ -19,7 +19,10 @@ const ImageLinkForm = ({
 				<p className='f4 mb4'>{'Grab and count the faces in your image!'}</p>
 			)}
 			<div className='center'>
-				<div className='pa4 br3 shadow-5 center form justify-around'>
+				<div
+					id='input-container'
+					className='pa4 br3 shadow-5 center form justify-around'
+				>
 					<input
 						className='user-input f4 pa2 w-75'
 						type='text'
