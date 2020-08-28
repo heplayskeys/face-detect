@@ -73,7 +73,6 @@ function App() {
 			setState(prevState => ({
 				...prevState,
 				imageURL: input,
-				faces: detectedFaces,
 				recentGrabs: [...recentGrabs, input]
 			}));
 			setState(prevState => ({
