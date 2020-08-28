@@ -52,7 +52,10 @@ const Register = ({ URL, setState }) => {
 
 	return (
 		<div>
-			<article className='mw6 center bg-white-20 br3 pa3 pa4-ns mv3 ba b--black-10 shadow-5'>
+			<article
+				id='form-container'
+				className='mw6 center bg-white-20 br3 pa3 pa4-ns mv3 ba b--black-10 shadow-5'
+			>
 				<main className='pa4 black-80'>
 					<div className='measure'>
 						<fieldset id='sign_up' className='ba b--transparent ph0 mh0'>

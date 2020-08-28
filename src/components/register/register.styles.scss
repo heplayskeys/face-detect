@@ -1,6 +1,6 @@
 $breakpoint-phone: 450px;
 
-article {
+#form-container {
 	@media screen and (max-width: $breakpoint-phone) {
 		border: none;
 		background: none;
