@@ -20,3 +20,17 @@ $breakpoint-tablet: 768px;
 		font-weight: normal;
 	}
 }
+
+.user-input {
+	@media screen and (max-width: $breakpoint-tablet) {
+		border-top-left-radius: 0.5rem;
+		border-bottom-left-radius: 0.5rem;
+	}
+}
+
+.grab-btn {
+	@media screen and (max-width: $breakpoint-tablet) {
+		border-top-right-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
+	}
+}

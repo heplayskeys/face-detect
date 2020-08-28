@@ -4,5 +4,11 @@ $breakpoint-phone: 450px;
 	@media screen and (max-width: $breakpoint-phone) {
 		position: fixed;
 		font-size: 1em;
+		background-color: hsla(0, 0%, 100%, 0.4);
+		border-top-left-radius: 0.5rem;
+		border-bottom-left-radius: 0.5rem;
+		border-color: rgba(0, 0, 0, 0.1);
+		border-style: solid;
+		border-width: 1px;
 	}
 }
