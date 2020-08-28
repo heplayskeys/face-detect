@@ -76,6 +76,10 @@ function App() {
 				faces: detectedFaces,
 				recentGrabs: [...recentGrabs, input]
 			}));
+			setState(prevState => ({
+				...prevState,
+				faces: detectedFaces
+			}));
 		} catch (err) {
 			console.error('Unable to complete request');
 			setErrorState('Unable to complete request');
