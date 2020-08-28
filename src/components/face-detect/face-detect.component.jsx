@@ -2,10 +2,10 @@ import React from 'react';
 import BoundingBox from '../bounding-box/bounding-box.component.jsx';
 import './face-detect.styles.scss';
 
-const FaceDetect = ({ imageURL, faces }) => {
+const FaceDetect = ({ imageURL, faces, error }) => {
 	const inputImage = document.querySelector('#face-detect-img');
 
-	return imageURL ? (
+	return imageURL && !error ? (
 		<div className='ma center'>
 			<div className='absolute mt4 db'>
 				<img
@@ -19,7 +19,11 @@ const FaceDetect = ({ imageURL, faces }) => {
 					: null}
 			</div>
 		</div>
-	) : null;
+	) : (
+		<div className='f4 mt4 dark-red animate__animated animate__bounceIn dib'>
+			{error}
+		</div>
+	);
 };
 
 export default FaceDetect;

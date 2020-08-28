@@ -1,4 +1,11 @@
+$breakpoint-image: 550px;
+
 .detect-img {
 	width: auto;
 	height: 425px;
+
+	@media screen and (max-width: $breakpoint-image) {
+		width: 90%;
+		height: auto;
+	}
 }

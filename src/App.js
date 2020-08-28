@@ -36,6 +36,8 @@ function App() {
 		setState
 	] = useState(initialState);
 
+	const [errorState, setErrorState] = useState('');
+
 	const handleInput = e => {
 		const userInput = e.target.value;
 		setState(prevState => ({ ...prevState, input: userInput }));
@@ -46,15 +48,11 @@ function App() {
 			return;
 		}
 
+		setErrorState('');
+
 		if (faces.length) {
 			setState(prevState => ({ ...prevState, faces: [], imageURL: '' }));
 		}
-
-		setState(prevState => ({
-			...prevState,
-			imageURL: input,
-			recentGrabs: [...recentGrabs, input]
-		}));
 
 		try {
 			const apiCall = await fetch(`${URL}/imageurl`, {
@@ -65,15 +63,23 @@ function App() {
 				})
 			});
 			const request = await apiCall.json();
+
 			const detectedFaces = request.outputs[0].data.regions.map(region => {
 				const {
 					region_info: { bounding_box }
 				} = region;
 				return { ...bounding_box };
 			});
-			setState(prevState => ({ ...prevState, faces: detectedFaces }));
+			setState(prevState => ({
+				...prevState,
+				imageURL: input,
+				faces: detectedFaces,
+				recentGrabs: [...recentGrabs, input]
+			}));
 		} catch (err) {
-			console.log('Oops!', err);
+			console.error('Unable to complete request');
+			setErrorState('Unable to complete request');
+			return;
 		}
 
 		setState(prevState => ({ ...prevState, input: '' }));
@@ -128,7 +134,7 @@ function App() {
 						recentGrabs={recentGrabs}
 						setState={setState}
 					/>
-					<FaceDetect imageURL={imageURL} faces={faces} />
+					<FaceDetect imageURL={imageURL} faces={faces} error={errorState} />
 				</div>
 			)}
 			{recentGrabs.length ? (
@@ -136,6 +142,7 @@ function App() {
 					recentGrabs={recentGrabs}
 					setState={setState}
 					route={route}
+					error={errorState}
 				/>
 			) : null}
 		</div>
