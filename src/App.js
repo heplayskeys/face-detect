@@ -55,6 +55,10 @@ function App() {
 		}
 
 		try {
+			setState(prevState => ({
+				...prevState,
+				imageURL: input
+			}));
 			const apiCall = await fetch(`${URL}/imageurl`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -72,12 +76,8 @@ function App() {
 			});
 			setState(prevState => ({
 				...prevState,
-				imageURL: input,
+				faces: detectedFaces,
 				recentGrabs: [...recentGrabs, input]
-			}));
-			setState(prevState => ({
-				...prevState,
-				faces: detectedFaces
 			}));
 		} catch (err) {
 			console.error('Unable to complete request');
