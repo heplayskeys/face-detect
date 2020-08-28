@@ -55,10 +55,6 @@ function App() {
 		}
 
 		try {
-			setState(prevState => ({
-				...prevState,
-				imageURL: input
-			}));
 			const apiCall = await fetch(`${URL}/imageurl`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -66,6 +62,14 @@ function App() {
 					input
 				})
 			});
+
+			if (apiCall.status === 200) {
+				setState(prevState => ({
+					...prevState,
+					imageURL: input
+				}));
+			}
+
 			const request = await apiCall.json();
 
 			const detectedFaces = request.outputs[0].data.regions.map(region => {
