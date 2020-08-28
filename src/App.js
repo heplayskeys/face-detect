@@ -63,13 +63,6 @@ function App() {
 				})
 			});
 
-			if (apiCall.status === 200) {
-				setState(prevState => ({
-					...prevState,
-					imageURL: input
-				}));
-			}
-
 			const request = await apiCall.json();
 
 			const detectedFaces = request.outputs[0].data.regions.map(region => {
@@ -80,6 +73,7 @@ function App() {
 			});
 			setState(prevState => ({
 				...prevState,
+				imageURL: input,
 				faces: detectedFaces,
 				recentGrabs: [...recentGrabs, input]
 			}));
