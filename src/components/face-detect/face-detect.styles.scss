@@ -1,4 +1,5 @@
 $breakpoint-tablet: 768px;
+$breakpoint-phone: 450px;
 
 .detect-img {
 	width: auto;
@@ -7,5 +8,16 @@ $breakpoint-tablet: 768px;
 	@media screen and (max-width: $breakpoint-tablet) {
 		width: auto;
 		height: 350px;
+	}
+
+	@media screen and (max-width: $breakpoint-phone) {
+		width: 90%;
+		height: 90%;
+	}
+}
+
+.display-image-container {
+	@media screen and (max-width: $breakpoint-phone) {
+		margin-top: 20px;
 	}
 }

@@ -24,14 +24,14 @@ const ImageLinkForm = ({
 					className='pa4 br3 shadow-5 center form justify-around'
 				>
 					<input
-						className='user-input f4 pa2 w-75'
+						className='user-input f4 pa2 w-75-ns'
 						type='text'
 						placeholder='input image URL here'
 						onChange={handleInput}
 						value={input}
 					/>
 					<button
-						className='grab-btn w-20 f4 grow link ph3 pv2 dib white mybg'
+						className='grab-btn w-20-ns f4 grow link ph3 pv2 dib white mybg'
 						onClick={handleSubmit}
 					>
 						{'grab'}

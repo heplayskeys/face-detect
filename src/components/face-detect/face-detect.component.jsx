@@ -7,7 +7,7 @@ const FaceDetect = ({ imageURL, faces, error }) => {
 
 	return imageURL && !error ? (
 		<div className='ma center'>
-			<div className='absolute mt4 db'>
+			<div className='absolute mt4 db display-image-container'>
 				<img
 					id='face-detect-img'
 					className='ba br3 b--white shadow-3 animate__animated animate__bounceIn detect-img'
