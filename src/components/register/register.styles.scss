@@ -2,6 +2,7 @@ $breakpoint-phone: 450px;
 
 #form-container {
 	@media screen and (max-width: $breakpoint-phone) {
+		margin-top: 10px;
 		border: none;
 		background: none;
 		box-shadow: none;
