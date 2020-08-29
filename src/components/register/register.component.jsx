@@ -133,6 +133,7 @@ const Register = ({ URL, setState }) => {
 			</article>
 			{errorState ? (
 				<div
+					id='error-message'
 					className='f4 mt4 dark-red animate__animated animate__heartBeat dib'
 					style={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}
 				>

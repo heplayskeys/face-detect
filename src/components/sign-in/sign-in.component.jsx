@@ -98,7 +98,10 @@ const SignIn = ({ URL, setState }) => {
 				</main>
 			</article>
 			{errorState ? (
-				<div className='f4 mt4 dark-red animate__animated animate__heartBeat'>
+				<div
+					id='error-message'
+					className='f4 mt4 dark-red animate__animated animate__heartBeat'
+				>
 					{errorState}
 				</div>
 			) : null}

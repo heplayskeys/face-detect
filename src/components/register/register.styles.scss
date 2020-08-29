@@ -6,5 +6,13 @@ $breakpoint-phone: 450px;
 		border: none;
 		background: none;
 		box-shadow: none;
+		margin-bottom: 0;
+	}
+}
+
+#error-message {
+	@media screen and (max-width: $breakpoint-phone) {
+		margin: 0;
+		font-size: 0.85rem;
 	}
 }

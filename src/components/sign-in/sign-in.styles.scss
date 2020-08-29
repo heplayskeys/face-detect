@@ -15,3 +15,9 @@ $breakpoint-phone: 450px;
 		box-shadow: none;
 	}
 }
+
+#error-message {
+	@media screen and (max-width: $breakpoint-phone) {
+		margin: 0;
+	}
+}
