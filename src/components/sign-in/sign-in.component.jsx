@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { updateRoute } from '../../redux/route/route.actions';
+import { setUserProfile } from '../../redux/user/user.actions';
 import './sign-in.styles.scss';
 
-const SignIn = ({ URL, setState }) => {
+const SignIn = ({ URL, setState, route, setRoute, setUser }) => {
 	const [errorState, setErrorState] = useState('');
 
 	const handleSubmit = async () => {
@@ -28,7 +31,9 @@ const SignIn = ({ URL, setState }) => {
 		const activeUser = await resp.json();
 
 		if (resp.status === 200) {
-			setState(prevState => ({ ...prevState, activeUser, route: 'home' }));
+			// setState(prevState => ({ ...prevState, activeUser, loggedIn: true }));
+			setUser(activeUser);
+			setRoute('login');
 		} else {
 			console.error('Invalid email and password');
 			setErrorState('Invalid email and password');
@@ -86,9 +91,7 @@ const SignIn = ({ URL, setState }) => {
 							<div className='lh-copy mt3'>
 								<p
 									className='f5 link black db bolder mb1 pointer'
-									onClick={() =>
-										setState(prevState => ({ ...prevState, route: 'register' }))
-									}
+									onClick={() => setRoute(route)}
 								>
 									Register
 								</p>
@@ -109,4 +112,13 @@ const SignIn = ({ URL, setState }) => {
 	);
 };
 
-export default SignIn;
+const mapStateToProps = state => ({
+	route: state.setRoute.route
+});
+
+const mapDispatchToProps = dispatch => ({
+	setRoute: route => dispatch(updateRoute(route)),
+	setUser: user => dispatch(setUserProfile(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { updateRoute } from '../../redux/route/route.actions';
 import './register.styles.scss';
 
-const Register = ({ URL, setState }) => {
+const Register = ({ URL, setState, route, setRoute }) => {
 	const [errorState, setErrorState] = useState('');
 
 	const handleSubmit = async () => {
@@ -120,9 +122,7 @@ const Register = ({ URL, setState }) => {
 							<div className='lh-copy mt3'>
 								<p
 									className='f5 link black db bolder pointer'
-									onClick={() =>
-										setState(prevState => ({ ...prevState, route: 'signin' }))
-									}
+									onClick={() => setRoute(route)}
 								>
 									{'<-- Back'}
 								</p>
@@ -144,4 +144,12 @@ const Register = ({ URL, setState }) => {
 	);
 };
 
-export default Register;
+const mapStateToProps = state => ({
+	route: state.setRoute.route
+});
+
+const mapDispatchToProps = dispatch => ({
+	setRoute: route => dispatch(updateRoute(route))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -1,14 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setInputField } from '../../redux/input/input.actions';
 import FaceCount from '../face-count/face-count.component.jsx';
 import './image-link-form.styles.scss';
 
-const ImageLinkForm = ({
-	input,
-	handleInput,
-	handleSubmit,
-	numFaces,
-	recentGrabs
-}) => {
+const ImageLinkForm = props => {
+	const { input, handleSubmit, numFaces, recentGrabs, setInput } = props;
+
 	return (
 		<div>
 			{numFaces || recentGrabs.length ? (
@@ -27,7 +25,7 @@ const ImageLinkForm = ({
 						className='user-input f4 pa2 w-75-ns'
 						type='text'
 						placeholder='input image URL here'
-						onChange={handleInput}
+						onChange={setInput}
 						value={input}
 					/>
 					<button
@@ -42,4 +40,8 @@ const ImageLinkForm = ({
 	);
 };
 
-export default ImageLinkForm;
+const mapDispatchToProps = dispatch => ({
+	setInput: e => dispatch(setInputField(e.target.value))
+});
+
+export default connect(null, mapDispatchToProps)(ImageLinkForm);

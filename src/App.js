@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { updateRoute } from './redux/route/route.actions';
+import { setUserProfile, updateUserEntries } from './redux/user/user.actions';
+import { setInputField } from './redux/input/input.actions';
 import Navigation from './components/navigation/navigation-component.jsx';
 import Logo from './components/logo/logo.component.jsx';
 import UserGreeting from './components/user-greeting/user-greeting.component.jsx';
@@ -15,33 +19,29 @@ import './App.scss';
 
 const URL = 'https://boiling-brushlands-70070.herokuapp.com';
 
-function App() {
+const App = ({
+	input,
+	route,
+	setRoute,
+	activeUser,
+	setUser,
+	setInput,
+	updateUser
+}) => {
 	const initialState = {
-		input: '',
 		imageURL: '',
 		faces: [],
-		recentGrabs: [],
-		route: 'signin',
-		activeUser: {}
+		recentGrabs: []
 	};
 
 	useEffect(() => {
-		if (route === 'signout') {
+		if (route === 'signout' && activeUser) {
 			resetApplication();
 		}
 	});
 
-	const [
-		{ input, imageURL, faces, recentGrabs, route, activeUser },
-		setState
-	] = useState(initialState);
-
+	const [{ imageURL, faces, recentGrabs }, setState] = useState(initialState);
 	const [errorState, setErrorState] = useState('');
-
-	const handleInput = e => {
-		const userInput = e.target.value;
-		setState(prevState => ({ ...prevState, input: userInput }));
-	};
 
 	const handleSubmit = async () => {
 		if (!input.length) {
@@ -83,9 +83,9 @@ function App() {
 			return;
 		}
 
-		setState(prevState => ({ ...prevState, input: '' }));
+		setInput();
 
-		const resp = await fetch(`${URL}/image`, {
+		await fetch(`${URL}/image`, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -93,11 +93,7 @@ function App() {
 			})
 		});
 
-		const userEntries = await resp.json();
-		setState(prevState => ({
-			...prevState,
-			activeUser: { ...activeUser, entries: userEntries }
-		}));
+		updateUser(activeUser);
 	};
 
 	const setPage = () => {
@@ -109,27 +105,25 @@ function App() {
 	};
 
 	const resetApplication = () => {
+		setRoute();
+		setUser();
+		setInput();
 		setState({ ...initialState });
 	};
 
 	return (
 		<div className='App'>
 			<Particles className='particles' params={particlesOptions} />
-			<Navigation
-				route={route}
-				setState={setState}
-				resetApplication={resetApplication}
-			/>
-			{route !== 'home' ? (
+			<Navigation route={route} setState={setState} />
+			{!activeUser ? (
 				setPage()
 			) : (
 				<div>
 					<Logo />
 					<UserGreeting name={activeUser.name} />
-					<Rank entries={activeUser.entries} />
+					<Rank />
 					<ImageLinkForm
 						input={input}
-						handleInput={handleInput}
 						handleSubmit={handleSubmit}
 						numFaces={faces.length}
 						recentGrabs={recentGrabs}
@@ -139,15 +133,23 @@ function App() {
 				</div>
 			)}
 			{recentGrabs.length ? (
-				<RecentFaces
-					recentGrabs={recentGrabs}
-					setState={setState}
-					route={route}
-					error={errorState}
-				/>
+				<RecentFaces recentGrabs={recentGrabs} error={errorState} />
 			) : null}
 		</div>
 	);
-}
+};
 
-export default App;
+const mapStateToProps = state => ({
+	input: state.setInput.input,
+	route: state.setRoute.route,
+	activeUser: state.setUser.activeUser
+});
+
+const mapDispatchToProps = dispatch => ({
+	setInput: () => dispatch(setInputField('')),
+	setRoute: () => dispatch(updateRoute('')),
+	setUser: () => dispatch(setUserProfile(null)),
+	updateUser: entries => dispatch(updateUserEntries(entries))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

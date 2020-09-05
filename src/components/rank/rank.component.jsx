@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './rank-styles.scss';
 
 const Rank = ({ entries }) => {
@@ -9,4 +10,8 @@ const Rank = ({ entries }) => {
 	);
 };
 
-export default Rank;
+const mapStateToProps = state => ({
+	entries: state.setUser.activeUser.entries
+});
+
+export default connect(mapStateToProps)(Rank);

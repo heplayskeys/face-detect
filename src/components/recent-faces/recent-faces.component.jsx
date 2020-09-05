@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setInputField } from '../../redux/input/input.actions';
 import './recent-faces.styles.scss';
 
-const RecentFaces = ({ recentGrabs, setState, route }) => {
+const RecentFaces = ({ recentGrabs, route, setInput }) => {
 	const grabs = new Set();
 
 	for (let i = recentGrabs.length - 1; i >= 0; i--) {
@@ -18,7 +20,7 @@ const RecentFaces = ({ recentGrabs, setState, route }) => {
 
 	const handleClick = e => {
 		const src = e.target.src;
-		setState(prevState => ({ ...prevState, input: src }));
+		setInput(src);
 	};
 
 	return route === 'home' ? (
@@ -37,4 +39,13 @@ const RecentFaces = ({ recentGrabs, setState, route }) => {
 	) : null;
 };
 
-export default RecentFaces;
+const mapStateToProps = state => ({
+	input: state.setInput.input,
+	route: state.setRoute.route
+});
+
+const mapDispatchToProps = dispatch => ({
+	setInput: input => dispatch(setInputField(input))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecentFaces);
