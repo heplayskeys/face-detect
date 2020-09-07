@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { updateRoute } from './redux/route/route.actions';
 import { setUserProfile, updateUserEntries } from './redux/user/user.actions';
 import { setInputField } from './redux/input/input.actions';
+import { requestClarifai } from './redux/clarifai/clarifai.actions';
 import Navigation from './components/navigation/navigation-component.jsx';
 import Logo from './components/logo/logo.component.jsx';
 import UserGreeting from './components/user-greeting/user-greeting.component.jsx';
@@ -26,11 +27,13 @@ const App = ({
 	activeUser,
 	setUser,
 	setInput,
-	updateUser
+	updateUser,
+	getFaces,
+	detectedFaces,
+	isPending
 }) => {
 	const initialState = {
 		imageURL: '',
-		faces: [],
 		recentGrabs: []
 	};
 
@@ -40,7 +43,7 @@ const App = ({
 		}
 	});
 
-	const [{ imageURL, faces, recentGrabs }, setState] = useState(initialState);
+	const [{ imageURL, recentGrabs }, setState] = useState(initialState);
 	const [errorState, setErrorState] = useState('');
 
 	const handleSubmit = async () => {
@@ -49,39 +52,13 @@ const App = ({
 		}
 
 		setErrorState('');
+		await getFaces(input);
 
-		if (faces.length) {
-			setState(prevState => ({ ...prevState, faces: [], imageURL: '' }));
-		}
-
-		try {
-			const apiCall = await fetch(`${URL}/imageurl`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					input
-				})
-			});
-
-			const request = await apiCall.json();
-
-			const detectedFaces = request.outputs[0].data.regions.map(region => {
-				const {
-					region_info: { bounding_box }
-				} = region;
-				return { ...bounding_box };
-			});
-			setState(prevState => ({
-				...prevState,
-				imageURL: input,
-				faces: detectedFaces,
-				recentGrabs: [...recentGrabs, input]
-			}));
-		} catch (err) {
-			console.error('Unable to complete request');
-			setErrorState('Unable to complete request');
-			return;
-		}
+		setState(prevState => ({
+			...prevState,
+			imageURL: input,
+			recentGrabs: [...recentGrabs, input]
+		}));
 
 		setInput();
 
@@ -108,6 +85,7 @@ const App = ({
 		setRoute();
 		setUser();
 		setInput();
+		getFaces(false);
 		setState({ ...initialState });
 	};
 
@@ -125,11 +103,23 @@ const App = ({
 					<ImageLinkForm
 						input={input}
 						handleSubmit={handleSubmit}
-						numFaces={faces.length}
+						numFaces={detectedFaces.length}
 						recentGrabs={recentGrabs}
 						setState={setState}
 					/>
-					<FaceDetect imageURL={imageURL} faces={faces} error={errorState} />
+					{isPending ? (
+						<div className='ma center'>
+							<h3 className='f3 animate__animated animate__pulse animate__infinite'>
+								{'Grabbing faces...'}
+							</h3>
+						</div>
+					) : (
+						<FaceDetect
+							imageURL={imageURL}
+							detectedFaces={detectedFaces}
+							error={errorState}
+						/>
+					)}
 				</div>
 			)}
 			{recentGrabs.length ? (
@@ -142,14 +132,17 @@ const App = ({
 const mapStateToProps = state => ({
 	input: state.setInput.input,
 	route: state.setRoute.route,
-	activeUser: state.setUser.activeUser
+	activeUser: state.setUser.activeUser,
+	detectedFaces: state.getFaces.detectedFaces,
+	isPending: state.getFaces.isPending
 });
 
 const mapDispatchToProps = dispatch => ({
 	setInput: () => dispatch(setInputField('')),
 	setRoute: () => dispatch(updateRoute('')),
 	setUser: () => dispatch(setUserProfile(null)),
-	updateUser: entries => dispatch(updateUserEntries(entries))
+	updateUser: entries => dispatch(updateUserEntries(entries)),
+	getFaces: input => dispatch(requestClarifai(input))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

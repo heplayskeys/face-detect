@@ -2,7 +2,7 @@ import React from 'react';
 import BoundingBox from '../bounding-box/bounding-box.component.jsx';
 import './face-detect.styles.scss';
 
-const FaceDetect = ({ imageURL, faces, error }) => {
+const FaceDetect = ({ imageURL, detectedFaces, error }) => {
 	const inputImage = document.querySelector('#face-detect-img');
 
 	return imageURL && !error ? (
@@ -15,7 +15,9 @@ const FaceDetect = ({ imageURL, faces, error }) => {
 					alt='face-detect'
 				/>
 				{inputImage && inputImage !== undefined
-					? faces.map((face, idx) => <BoundingBox key={idx} face={face} />)
+					? detectedFaces.map((face, idx) => (
+							<BoundingBox key={idx} face={face} />
+					  ))
 					: null}
 			</div>
 		</div>

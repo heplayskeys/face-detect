@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { updateRoute } from '../../redux/route/route.actions';
 import './register.styles.scss';
 
-const Register = ({ URL, setState, route, setRoute }) => {
+const Register = ({ URL, route, setRoute }) => {
 	const [errorState, setErrorState] = useState('');
 
 	const handleSubmit = async () => {
@@ -38,7 +38,7 @@ const Register = ({ URL, setState, route, setRoute }) => {
 
 		if (resp.status === 200) {
 			alert('User created. Please sign in.');
-			setState(prevState => ({ ...prevState, route: 'signin' }));
+			setRoute(route);
 		} else {
 			const errorMsg = await resp.json();
 			console.error('Error:', errorMsg);

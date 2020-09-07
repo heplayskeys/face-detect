@@ -10,3 +10,9 @@ $breakpoint-phone: 450px;
 		border-width: 1px;
 	}
 }
+
+nav div {
+	@media screen and (max-width: $breakpoint-phone) {
+		margin-right: auto;
+	}
+}
