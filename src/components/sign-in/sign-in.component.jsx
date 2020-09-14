@@ -4,7 +4,7 @@ import { updateRoute } from '../../redux/route/route.actions';
 import { setUserProfile } from '../../redux/user/user.actions';
 import './sign-in.styles.scss';
 
-const SignIn = ({ URL, setState, route, setRoute, setUser }) => {
+const SignIn = ({ URL, route, setRoute, setUser }) => {
 	const [errorState, setErrorState] = useState('');
 
 	const handleSubmit = async () => {
@@ -31,7 +31,6 @@ const SignIn = ({ URL, setState, route, setRoute, setUser }) => {
 		const activeUser = await resp.json();
 
 		if (resp.status === 200) {
-			// setState(prevState => ({ ...prevState, activeUser, loggedIn: true }));
 			setUser(activeUser);
 			setRoute('login');
 		} else {
