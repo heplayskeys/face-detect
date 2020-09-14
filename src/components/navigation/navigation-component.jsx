@@ -13,7 +13,7 @@ const Navigation = ({ route, setRoute, activeUser }) => {
 	return (
 		<nav className='flex justify-end'>
 			{activeUser ? (
-				<div className='tc grow pointer' style={{ padding: '1.5rem' }}>
+				<div className='user-icon tc grow pointer'>
 					<p
 						className='flex items-center justify-center br-100 pa3 m0 ba b--white h3 w3 f2 shadow-3 grow'
 						style={{
@@ -27,7 +27,7 @@ const Navigation = ({ route, setRoute, activeUser }) => {
 				</div>
 			) : null}
 			<p
-				className='sign-out f3 link dim black underline pa3 pointer'
+				className='sign-out link dim black underline pa3 pointer'
 				onClick={() => setRoute(route)}
 			>
 				{displayRoute[route]}
