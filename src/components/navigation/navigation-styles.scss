@@ -13,6 +13,6 @@ $breakpoint-phone: 450px;
 
 nav div {
 	@media screen and (max-width: $breakpoint-phone) {
-		margin-right: auto;
+		margin: 10px auto 0 10px;
 	}
 }
