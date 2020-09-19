@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { updateRoute } from '../../redux/route/route.actions';
 import './register.styles.scss';
 
-const Register = ({ URL, route, setRoute }) => {
+export const Register = ({ URL, route, setRoute }) => {
 	const [errorState, setErrorState] = useState('');
 
 	const handleSubmit = async () => {

@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RecentFaces /> renders the recent faces component with length 1 1`] = `
+<div
+  className="recent-grabs-container"
+>
+  <h3
+    className="tr"
+  >
+    Recent Grabs:
+  </h3>
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="0"
+    onClick={[Function]}
+    src={0}
+  />
+</div>
+`;
+
+exports[`<RecentFaces /> renders the recent faces component with length 3 1`] = `
+<div
+  className="recent-grabs-container"
+>
+  <h3
+    className="tr"
+  >
+    Recent Grabs:
+  </h3>
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="0"
+    onClick={[Function]}
+    src={2}
+  />
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="1"
+    onClick={[Function]}
+    src={1}
+  />
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="2"
+    onClick={[Function]}
+    src={0}
+  />
+</div>
+`;
+
+exports[`<RecentFaces /> renders the recent faces component with length 4 1`] = `
+<div
+  className="recent-grabs-container"
+>
+  <h3
+    className="tr"
+  >
+    Recent Grabs:
+  </h3>
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="0"
+    onClick={[Function]}
+    src={3}
+  />
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="1"
+    onClick={[Function]}
+    src={2}
+  />
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="2"
+    onClick={[Function]}
+    src={1}
+  />
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="3"
+    onClick={[Function]}
+    src={0}
+  />
+</div>
+`;
+
+exports[`<RecentFaces /> renders the recent faces component with length 4 as maximum count 1`] = `
+<div
+  className="recent-grabs-container"
+>
+  <h3
+    className="tr"
+  >
+    Recent Grabs:
+  </h3>
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="0"
+    onClick={[Function]}
+    src={7}
+  />
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="1"
+    onClick={[Function]}
+    src={6}
+  />
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="2"
+    onClick={[Function]}
+    src={5}
+  />
+  <img
+    alt="recent-grab"
+    className="recent-grab grower dimmer db mw5 br2 ba b--black-10 shadow-1 pointer"
+    key="3"
+    onClick={[Function]}
+    src={4}
+  />
+</div>
+`;

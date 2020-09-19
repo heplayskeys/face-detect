@@ -25,8 +25,6 @@ const getRoute = route => {
 export const updateRoute = route => {
 	const routePayload = getRoute(route);
 
-	console.log('ROUTE', route);
-
 	return {
 		type: RouteActionTypes.CHANGE_ROUTE,
 		payload: routePayload

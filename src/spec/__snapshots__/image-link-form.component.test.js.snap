@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ImageLinkForm /> renders image link form with face detect component 1`] = `
+<div>
+  <div>
+    <FaceCount
+      numFaces={10}
+    />
+  </div>
+  <div
+    className="center"
+  >
+    <div
+      className="pa4 br3 shadow-5 center form justify-around"
+      id="input-container"
+    >
+      <input
+        className="user-input f4 pa2 w-75-ns"
+        onChange={[MockFunction]}
+        placeholder="input image URL here"
+        type="text"
+        value=""
+      />
+      <button
+        className="grab-btn w-20-ns f4 grow link ph3 pv2 dib white mybg"
+        onClick={[MockFunction]}
+      >
+        grab
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ImageLinkForm /> renders image link form without face detect component 1`] = `
+<div>
+  <p
+    className="f4 mb4"
+  >
+    Grab and count the faces in your image!
+  </p>
+  <div
+    className="center"
+  >
+    <div
+      className="pa4 br3 shadow-5 center form justify-around"
+      id="input-container"
+    >
+      <input
+        className="user-input f4 pa2 w-75-ns"
+        onChange={[MockFunction]}
+        placeholder="input image URL here"
+        type="text"
+        value=""
+      />
+      <button
+        className="grab-btn w-20-ns f4 grow link ph3 pv2 dib white mybg"
+        onClick={[MockFunction]}
+      >
+        grab
+      </button>
+    </div>
+  </div>
+</div>
+`;

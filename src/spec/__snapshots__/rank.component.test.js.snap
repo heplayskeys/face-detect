@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Rank /> renders rank component with mock props 1`] = `
+<div
+  className="rank-container dib ba b--white-50 br3 pa3 bg-black-10"
+>
+  <div
+    className="white f4"
+  >
+    You have contributed 10 images to face-grabber.
+  </div>
+</div>
+`;

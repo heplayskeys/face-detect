@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setInputField } from '../../redux/input/input.actions';
 import './recent-faces.styles.scss';
 
-const RecentFaces = ({ recentGrabs, route, setInput }) => {
+export const RecentFaces = ({ recentGrabs, route, setInput }) => {
 	const grabs = new Set();
 
 	for (let i = recentGrabs.length - 1; i >= 0; i--) {

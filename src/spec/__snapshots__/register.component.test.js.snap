@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Register /> renders register component 1`] = `
+<div>
+  <article
+    className="mw6 center bg-white-20 br3 pa3 pa4-ns mv3 ba b--black-10 shadow-5"
+    id="form-container"
+  >
+    <main
+      className="pa4 black-80"
+    >
+      <div
+        className="measure"
+      >
+        <fieldset
+          className="ba b--transparent ph0 mh0"
+          id="sign_up"
+        >
+          <legend
+            className="f2 fw6 ph0 mh0"
+          >
+            Register
+          </legend>
+          <div
+            className="mt3"
+          >
+            <label
+              className="db fw6 lh-copy f6"
+              htmlFor="name"
+            >
+              Name
+            </label>
+            <input
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              id="name"
+              maxLength={125}
+              name="name"
+              onKeyPress={[Function]}
+              type="text"
+            />
+          </div>
+          <div
+            className="mt3"
+          >
+            <label
+              className="db fw6 lh-copy f6"
+              htmlFor="email-address"
+            >
+              Email
+            </label>
+            <input
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              id="email-address"
+              name="email-address"
+              onKeyPress={[Function]}
+              type="email"
+            />
+          </div>
+          <div
+            className="mv3"
+          >
+            <label
+              className="db fw6 lh-copy f6"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              id="password"
+              name="password"
+              onKeyPress={[Function]}
+              type="password"
+            />
+          </div>
+          <div
+            className="mv3"
+          >
+            <label
+              className="db fw6 lh-copy f6"
+              htmlFor="confirm-password"
+            >
+              Confirm Password
+            </label>
+            <input
+              className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              id="confirm-password"
+              name="confirm-password"
+              onKeyPress={[Function]}
+              type="password"
+            />
+          </div>
+          <div
+            className="mt4"
+          >
+            <input
+              className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+              onClick={[Function]}
+              type="submit"
+              value="Register"
+            />
+          </div>
+          <div
+            className="lh-copy mt3"
+          >
+            <p
+              className="f5 link black db bolder pointer"
+              onClick={[Function]}
+            >
+              &lt;-- Back
+            </p>
+          </div>
+        </fieldset>
+      </div>
+    </main>
+  </article>
+</div>
+`;

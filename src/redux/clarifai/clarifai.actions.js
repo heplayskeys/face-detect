@@ -18,7 +18,7 @@ export const requestClarifai = input => async dispatch => {
 		body: JSON.stringify({
 			input
 		})
-	});
+	}).then(data => data);
 
 	try {
 		const request = await apiCall.json();

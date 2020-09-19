@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateRoute } from '../../redux/route/route.actions';
-import './navigation-styles.scss';
+import './navigation.styles.scss';
 
-const Navigation = ({ route, setRoute, activeUser }) => {
+export const Navigation = ({ route, setRoute, activeUser }) => {
 	const displayRoute = {
 		register: 'Sign In',
 		signin: 'Register',

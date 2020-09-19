@@ -4,7 +4,7 @@ import { updateRoute } from '../../redux/route/route.actions';
 import { setUserProfile } from '../../redux/user/user.actions';
 import './sign-in.styles.scss';
 
-const SignIn = ({ URL, route, setRoute, setUser }) => {
+export const SignIn = ({ URL, route, setRoute, setUser }) => {
 	const [errorState, setErrorState] = useState('');
 
 	const handleSubmit = async () => {

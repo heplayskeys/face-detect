@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FaceDetect /> returns correct face detect snapshot with props 1`] = `
+<div
+  className="ma center"
+>
+  <div
+    className="absolute mt4 db display-image-container"
+  >
+    <img
+      alt="face-detect"
+      className="ba br3 b--white shadow-3 animate__animated animate__bounceIn detect-img"
+      id="face-detect-img"
+      src="face-detect-img"
+    />
+  </div>
+</div>
+`;
+
+exports[`<FaceDetect /> returns correct face detect snapshot without props 1`] = `
+<div
+  className="f4 mt4 dark-red animate__animated animate__bounceIn dib"
+/>
+`;

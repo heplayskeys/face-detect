@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Logo /> returns correct logo snapshot 1`] = `
+<div
+  className="face-detect-logo ma4 mt0"
+>
+  <Tilt
+    className="Tilt br2 shadow-2"
+    options={
+      Object {
+        "max": 25,
+        "scale": 1.15,
+      }
+    }
+    style={
+      Object {
+        "height": 150,
+        "width": 150,
+      }
+    }
+  >
+    <div
+      className="Tilt-inner pa3"
+    >
+      <img
+        alt="Logo"
+        src="face.png"
+      />
+      <div>
+        face grabber
+      </div>
+    </div>
+  </Tilt>
+</div>
+`;

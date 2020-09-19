@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BoundingBox /> returns correct bounding box snapshot with no "face" prop 1`] = `
+<div
+  className="bounding-box grow animate__animated animate__fadeIn"
+  style={
+    Object {
+      "bottom": NaN,
+      "left": NaN,
+      "right": NaN,
+      "top": NaN,
+    }
+  }
+/>
+`;

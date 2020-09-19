@@ -4,7 +4,7 @@ import { setInputField } from '../../redux/input/input.actions';
 import FaceCount from '../face-count/face-count.component.jsx';
 import './image-link-form.styles.scss';
 
-const ImageLinkForm = props => {
+export const ImageLinkForm = props => {
 	const { input, handleSubmit, numFaces, recentGrabs, setInput } = props;
 
 	return (
