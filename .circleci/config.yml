@@ -1,20 +1,7 @@
-version: 2
-jobs:
-  hello:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: echo "A first hello!"
-  goodbye:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: echo "A last goodbye!"
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
 workflows:
-  version: 2
-  hello_goodbye:
+  node-tests:
     jobs:
-      - hello
-      - goodbye
+      - node/test
