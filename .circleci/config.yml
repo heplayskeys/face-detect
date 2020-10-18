@@ -12,9 +12,9 @@ jobs:
     steps:
       - checkout
       - run: echo "A last goodbye!"
-  workflows:
-    version: 2
-    hello_goodbye:
-      jobs:
-        - hello
-        - goodbye
+workflows:
+  version: 2
+  hello_goodbye:
+    jobs:
+      - hello
+      - goodbye
