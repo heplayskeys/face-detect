@@ -48,6 +48,10 @@ export const SignIn = ({ URL, route, setRoute, setUser }) => {
 			const activeUser = await userRequest.json();
 			setUser(activeUser);
 			setRoute('login');
+
+			fetch(`${URL}/image/${activeUser.id}`, {
+				method: 'DELETE'
+			});
 		} else {
 			console.error('Invalid email and password');
 			setErrorState('Invalid email and password');
