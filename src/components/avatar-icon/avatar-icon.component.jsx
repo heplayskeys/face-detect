@@ -54,6 +54,7 @@ const AvatarIcon = ({ route, setRoute, activeUser }) => {
 									fontStyle: 'italic'
 								}}
 							>
+								{console.log(activeUser)}
 								{activeUser.name[0].toUpperCase()}
 							</span>
 						</div>
