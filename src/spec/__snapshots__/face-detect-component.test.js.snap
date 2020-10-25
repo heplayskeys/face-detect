@@ -11,6 +11,7 @@ exports[`<FaceDetect /> returns correct face detect snapshot with props 1`] = `
       alt="face-detect"
       className="ba br3 b--white shadow-3 animate__animated animate__bounceIn detect-img"
       id="face-detect-img"
+      onLoad={[Function]}
       src="face-detect-img"
     />
   </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import './bounding-box.styles.scss';
 
 const calculateFaceLocation = data => {
-	const inputImage = document.querySelector('#face-detect-img');
+	const inputImage = document.querySelector('#face-detect-img') || 0;
 	const width = Number(inputImage.width);
 	const height = Number(inputImage.height);
 

@@ -7,7 +7,7 @@ exports[`<Rank /> renders rank component with mock props 1`] = `
   <div
     className="white f4"
   >
-    You have contributed 10 images to face-grabber. [object Promise]
+    You have contributed 10 images to face-grabber.
   </div>
 </div>
 `;

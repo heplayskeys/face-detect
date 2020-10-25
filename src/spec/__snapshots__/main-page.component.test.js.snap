@@ -133,7 +133,7 @@ exports[`<MainPage /> renders main page component with signed in user and sign o
     <UserGreeting />
     <Connect(Rank) />
     <Connect(ImageLinkForm)
-      URL="http://localhost:3001"
+      URL="https://boiling-brushlands-70070.herokuapp.com"
       handleSubmit={[Function]}
       input=""
       numFaces={0}
@@ -275,7 +275,7 @@ exports[`<MainPage /> renders main page component with signed in user and sign o
     route="signin"
   />
   <Connect(SignIn)
-    URL="http://localhost:3001"
+    URL="https://boiling-brushlands-70070.herokuapp.com"
   />
 </div>
 `;
@@ -407,7 +407,7 @@ exports[`<MainPage /> renders sign in and register pages from setPage function 1
     route="signin"
   />
   <Connect(SignIn)
-    URL="http://localhost:3001"
+    URL="https://boiling-brushlands-70070.herokuapp.com"
   />
 </div>
 `;
@@ -539,7 +539,7 @@ exports[`<MainPage /> renders sign in and register pages from setPage function 2
     route="register"
   />
   <Connect(Register)
-    URL="http://localhost:3001"
+    URL="https://boiling-brushlands-70070.herokuapp.com"
   />
 </div>
 `;

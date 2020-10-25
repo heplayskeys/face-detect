@@ -11,12 +11,17 @@ exports[`<ImageLinkForm /> renders image link form with face detect component 1`
     className="center"
   >
     <div
-      className="pa4 br3 shadow-5 center form justify-around"
+      className="br3 shadow-5 center form justify-around"
       id="input-container"
+      style={
+        Object {
+          "padding": "1.5rem",
+        }
+      }
     >
       <input
-        className="user-input f4 pa2 w-75-ns"
-        onChange={[MockFunction]}
+        className="user-input pa2 f4 w-75-ns"
+        onChange={[Function]}
         placeholder="input image URL here"
         type="text"
         value=""
@@ -33,17 +38,32 @@ exports[`<ImageLinkForm /> renders image link form with face detect component 1`
     className="center"
   >
     <div
-      className="pa4 br3 shadow-5 center form justify-around"
+      className="br3 shadow-5 center form justify-around"
       id="input-container"
+      style={
+        Object {
+          "padding": "0.75rem",
+        }
+      }
     >
       <form
         id="imageForm"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
       >
         <input
           accept="image/*"
-          className="user-file-input f4 pa2 w-75-ns"
+          className="user-file-input pa2 f4 w-75-ns"
           id="file-upload-input"
           onChange={[Function]}
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
           type="file"
         />
         <button
@@ -61,7 +81,7 @@ exports[`<ImageLinkForm /> renders image link form with face detect component 1`
 exports[`<ImageLinkForm /> renders image link form without face detect component 1`] = `
 <div>
   <p
-    className="f4 mt2 mb4"
+    className="f4 mt3 mb3"
   >
     Grab and count the faces in your image!
   </p>
@@ -69,12 +89,17 @@ exports[`<ImageLinkForm /> renders image link form without face detect component
     className="center"
   >
     <div
-      className="pa4 br3 shadow-5 center form justify-around"
+      className="br3 shadow-5 center form justify-around"
       id="input-container"
+      style={
+        Object {
+          "padding": "1.5rem",
+        }
+      }
     >
       <input
-        className="user-input f4 pa2 w-75-ns"
-        onChange={[MockFunction]}
+        className="user-input pa2 f4 w-75-ns"
+        onChange={[Function]}
         placeholder="input image URL here"
         type="text"
         value=""
@@ -91,17 +116,32 @@ exports[`<ImageLinkForm /> renders image link form without face detect component
     className="center"
   >
     <div
-      className="pa4 br3 shadow-5 center form justify-around"
+      className="br3 shadow-5 center form justify-around"
       id="input-container"
+      style={
+        Object {
+          "padding": "0.75rem",
+        }
+      }
     >
       <form
         id="imageForm"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
       >
         <input
           accept="image/*"
-          className="user-file-input f4 pa2 w-75-ns"
+          className="user-file-input pa2 f4 w-75-ns"
           id="file-upload-input"
           onChange={[Function]}
+          style={
+            Object {
+              "overflow": "hidden",
+            }
+          }
           type="file"
         />
         <button
