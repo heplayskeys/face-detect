@@ -62,12 +62,13 @@ exports[`<ImageLinkForm /> renders image link form with face detect component 1`
           style={
             Object {
               "overflow": "hidden",
+              "width": "100%",
             }
           }
           type="file"
         />
         <button
-          className="grab-btn w-20-ns f4 grow link ph3 pv2 dib white mybg"
+          className="upload-btn w-20-ns f4 grow link ph3 pv2 dib white mybg"
           onClick={[Function]}
         >
           upload
@@ -140,12 +141,13 @@ exports[`<ImageLinkForm /> renders image link form without face detect component
           style={
             Object {
               "overflow": "hidden",
+              "width": "100%",
             }
           }
           type="file"
         />
         <button
-          className="grab-btn w-20-ns f4 grow link ph3 pv2 dib white mybg"
+          className="upload-btn w-20-ns f4 grow link ph3 pv2 dib white mybg"
           onClick={[Function]}
         >
           upload
