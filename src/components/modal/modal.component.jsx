@@ -6,7 +6,7 @@ import './modal.styles.scss';
 const ProfileModal = ({ toggleModal, modal }) => {
 	const logo = document.querySelector('.Tilt-inner');
 
-	if (screen.width <= 768 && modal) {
+	if (window.innerWidth <= 768 && modal) {
 		logo.style.visibility = 'hidden';
 	} else {
 		logo.style.visibility = 'visible';
