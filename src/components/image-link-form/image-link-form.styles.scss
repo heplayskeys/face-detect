@@ -42,5 +42,6 @@ $breakpoint-tablet: 768px;
 .upload-btn {
 	@media screen and (max-width: $breakpoint-tablet) {
 		border-radius: 0.5rem;
+		margin-top: 1rem;
 	}
 }
