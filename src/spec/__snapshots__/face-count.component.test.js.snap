@@ -2,7 +2,7 @@
 
 exports[`<FaceCount /> returns correct face count snapshot with faces 1`] = `
 <div
-  className="mb2"
+  className="mv2"
 >
   <h3>
     I am able to grab 

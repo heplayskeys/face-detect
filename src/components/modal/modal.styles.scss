@@ -1,0 +1,46 @@
+$main-color: rgb(2, 142, 191);
+$secondary-color: rgb(149, 178, 189);
+
+.modal-body {
+	padding-bottom: 0 !important;
+}
+
+.modal-content {
+	background: linear-gradient(to right, rgb(2, 142, 191), rgb(191, 240, 199));
+	border-radius: 0.75rem !important;
+	padding-bottom: 2rem !important;
+}
+
+.modal-footer {
+	padding-top: 0 !important;
+}
+
+.modal-footer,
+.modal-header {
+	border: none !important;
+}
+
+.btn-outline-primary {
+	color: rgba(0, 0, 0, 0.5) !important;
+	border-color: $main-color !important;
+
+	&:hover {
+		color: white !important;
+		background-color: $main-color !important;
+	}
+}
+
+.btn-outline-secondary {
+	color: rgba(0, 0, 0, 0.5) !important;
+	border-color: $secondary-color !important;
+
+	&:hover {
+		color: white !important;
+		background-color: $secondary-color !important;
+	}
+}
+
+.modal-dialog {
+	max-width: 400px !important;
+	border-radius: 0.75rem !important;
+}

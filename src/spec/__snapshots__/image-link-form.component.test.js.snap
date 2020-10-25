@@ -29,13 +29,39 @@ exports[`<ImageLinkForm /> renders image link form with face detect component 1`
       </button>
     </div>
   </div>
+  <div
+    className="center"
+  >
+    <div
+      className="pa4 br3 shadow-5 center form justify-around"
+      id="input-container"
+    >
+      <form
+        id="imageForm"
+      >
+        <input
+          accept="image/*"
+          className="user-file-input f4 pa2 w-75-ns"
+          id="file-upload-input"
+          onChange={[Function]}
+          type="file"
+        />
+        <button
+          className="grab-btn w-20-ns f4 grow link ph3 pv2 dib white mybg"
+          onClick={[Function]}
+        >
+          upload
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`<ImageLinkForm /> renders image link form without face detect component 1`] = `
 <div>
   <p
-    className="f4 mb4"
+    className="f4 mt2 mb4"
   >
     Grab and count the faces in your image!
   </p>
@@ -59,6 +85,32 @@ exports[`<ImageLinkForm /> renders image link form without face detect component
       >
         grab
       </button>
+    </div>
+  </div>
+  <div
+    className="center"
+  >
+    <div
+      className="pa4 br3 shadow-5 center form justify-around"
+      id="input-container"
+    >
+      <form
+        id="imageForm"
+      >
+        <input
+          accept="image/*"
+          className="user-file-input f4 pa2 w-75-ns"
+          id="file-upload-input"
+          onChange={[Function]}
+          type="file"
+        />
+        <button
+          className="grab-btn w-20-ns f4 grow link ph3 pv2 dib white mybg"
+          onClick={[Function]}
+        >
+          upload
+        </button>
+      </form>
     </div>
   </div>
 </div>

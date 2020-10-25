@@ -67,7 +67,7 @@ export const Register = ({ URL, route, setRoute }) => {
 									Name
 								</label>
 								<input
-									className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+									className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hvr-blk'
 									maxLength={125}
 									type='text'
 									name='name'
@@ -80,7 +80,7 @@ export const Register = ({ URL, route, setRoute }) => {
 									Email
 								</label>
 								<input
-									className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+									className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hvr-blk'
 									type='email'
 									name='email-address'
 									id='email-address'
@@ -92,7 +92,7 @@ export const Register = ({ URL, route, setRoute }) => {
 									Password
 								</label>
 								<input
-									className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+									className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hvr-blk'
 									type='password'
 									name='password'
 									id='password'
@@ -104,7 +104,7 @@ export const Register = ({ URL, route, setRoute }) => {
 									Confirm Password
 								</label>
 								<input
-									className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+									className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hvr-blk'
 									type='password'
 									name='confirm-password'
 									id='confirm-password'

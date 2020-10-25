@@ -7,6 +7,12 @@ $breakpoint-phone: 450px;
 	}
 }
 
+.hvr-blk {
+	&:hover {
+		background-color: #000 !important;
+	}
+}
+
 #form-container {
 	@media screen and (max-width: $breakpoint-phone) {
 		margin-top: 10px;

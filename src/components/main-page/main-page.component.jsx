@@ -34,6 +34,12 @@ const MainPage = ({
 
 	useEffect(() => {
 		if (route === 'signout' && activeUser) {
+			window.sessionStorage.removeItem('token');
+
+			fetch(`${URL}/image/${activeUser.id}`, {
+				method: 'DELETE'
+			});
+
 			resetApplication();
 		}
 	});
@@ -46,26 +52,28 @@ const MainPage = ({
 			return;
 		}
 
+		await getFaces(false);
 		setErrorState('');
 		await getFaces(input);
 
-		setState(prevState => ({
-			...prevState,
+		setState({
 			imageURL: input,
 			recentGrabs: [...recentGrabs, input]
-		}));
-
-		setInput();
+		});
 
 		await fetch(`${URL}/image`, {
 			method: 'PUT',
-			headers: { 'Content-Type': 'application/json' },
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: window.sessionStorage.getItem('token')
+			},
 			body: JSON.stringify({
 				id: activeUser.id
 			})
 		});
 
-		updateUser(activeUser);
+		await updateUser(activeUser);
+		setInput();
 	};
 
 	const setPage = () => {
@@ -100,10 +108,12 @@ const MainPage = ({
 						handleSubmit={handleSubmit}
 						numFaces={detectedFaces.length}
 						recentGrabs={recentGrabs}
+						URL={URL}
+						userID={activeUser.id}
 					/>
 					{isPending ? (
 						<div className='ma center'>
-							<h3 className='f3 animate__animated animate__pulse animate__infinite'>
+							<h3 className='f3 mt3 animate__animated animate__pulse animate__infinite'>
 								{'Grabbing faces...'}
 							</h3>
 						</div>

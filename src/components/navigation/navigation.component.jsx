@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateRoute } from '../../redux/route/route.actions';
+import AvatarIcon from '../avatar-icon/avatar-icon.component';
 import './navigation.styles.scss';
 
 export const Navigation = ({ route, setRoute, activeUser }) => {
@@ -13,25 +14,15 @@ export const Navigation = ({ route, setRoute, activeUser }) => {
 	return (
 		<nav className='flex justify-end'>
 			{activeUser ? (
-				<div className='user-icon tc grow pointer'>
-					<p
-						className='flex items-center justify-center br-100 pa3 m0 ba b--white h3 w3 f2 shadow-3 grow'
-						style={{
-							margin: 0,
-							background: '#000',
-							color: '#fff'
-						}}
-					>
-						{activeUser.name[0].toUpperCase()}
-					</p>
-				</div>
-			) : null}
-			<p
-				className='sign-out link dim black underline pa3 pointer'
-				onClick={() => setRoute(route)}
-			>
-				{displayRoute[route]}
-			</p>
+				<AvatarIcon />
+			) : (
+				<p
+					className='sign-out link dim black underline pa3 pointer'
+					onClick={() => setRoute(route)}
+				>
+					{displayRoute[route]}
+				</p>
+			)}
 		</nav>
 	);
 };
