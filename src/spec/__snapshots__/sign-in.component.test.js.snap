@@ -31,7 +31,7 @@ exports[`<SignIn /> renders register component 1`] = `
               Email
             </label>
             <input
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hvr-blk"
               id="email-address"
               name="email-address"
               onKeyPress={[Function]}
@@ -48,7 +48,7 @@ exports[`<SignIn /> renders register component 1`] = `
               Password
             </label>
             <input
-              className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hvr-blk"
               id="password"
               name="password"
               onKeyPress={[Function]}

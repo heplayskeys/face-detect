@@ -2,7 +2,7 @@
 
 exports[`<FaceCount /> returns correct face count snapshot with faces 1`] = `
 <div
-  className="mb2"
+  className="mv2"
 >
   <h3>
     I am able to grab 
@@ -17,13 +17,9 @@ exports[`<FaceCount /> returns correct face count snapshot with faces 1`] = `
 `;
 
 exports[`<FaceCount /> returns correct face count snapshot with no faces 1`] = `
-<div
-  className="mb2"
+<p
+  className="f4 mt3 mb3"
 >
-  <h3
-    className="f3"
-  >
-    Counting faces...
-  </h3>
-</div>
+  I am unable to grab faces from your image.
+</p>
 `;

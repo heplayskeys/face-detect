@@ -16,3 +16,9 @@ $breakpoint-phone: 450px;
 		font-size: 0.85rem;
 	}
 }
+
+.hvr-blk {
+	&:hover {
+		background-color: #000 !important;
+	}
+}

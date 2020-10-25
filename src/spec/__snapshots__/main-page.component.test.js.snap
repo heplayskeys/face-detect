@@ -133,6 +133,7 @@ exports[`<MainPage /> renders main page component with signed in user and sign o
     <UserGreeting />
     <Connect(Rank) />
     <Connect(ImageLinkForm)
+      URL="https://boiling-brushlands-70070.herokuapp.com"
       handleSubmit={[Function]}
       input=""
       numFaces={0}

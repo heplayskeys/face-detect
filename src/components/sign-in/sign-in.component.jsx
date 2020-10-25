@@ -6,6 +6,7 @@ import './sign-in.styles.scss';
 
 export const SignIn = ({ URL, route, setRoute, setUser }) => {
 	const [errorState, setErrorState] = useState('');
+	const sessionToken = window.sessionStorage.getItem('token');
 
 	const handleSubmit = async () => {
 		const email = document.querySelector('#email-address').value;
@@ -21,16 +22,32 @@ export const SignIn = ({ URL, route, setRoute, setUser }) => {
 
 		const resp = await fetch(`${URL}/signin`, {
 			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
+			headers: {
+				'Content-Type': 'application/json'
+			},
 			body: JSON.stringify({
 				email,
 				password
 			})
 		});
 
-		const activeUser = await resp.json();
+		console.log(resp.status);
 
 		if (resp.status === 200) {
+			const userAuth = await resp.json();
+			const userAuthToken = userAuth.token ? userAuth.token : sessionToken;
+
+			const userRequest = await fetch(`${URL}/profile/${userAuth.id}`, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: userAuthToken
+				}
+			});
+
+			if (!sessionToken) setSessionStorage(userAuth.token, userAuth.id);
+
+			const activeUser = await userRequest.json();
 			setUser(activeUser);
 			setRoute('login');
 		} else {
@@ -39,11 +56,48 @@ export const SignIn = ({ URL, route, setRoute, setUser }) => {
 		}
 	};
 
+	const setSessionStorage = (token, id) => {
+		window.sessionStorage.setItem('token', token);
+	};
+
 	const handleEnterKey = event => {
 		if (event.key === 'Enter') {
 			handleSubmit();
 		}
 	};
+
+	const checkSession = async () => {
+		if (sessionToken) {
+			try {
+				const userIdRequest = await fetch(`${URL}/signin`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: sessionToken
+					}
+				});
+
+				const user = await userIdRequest.json();
+
+				if (user) {
+					const userRequest = await fetch(`${URL}/profile/${user.id}`, {
+						method: 'GET',
+						headers: {
+							'Content-Type': 'application/json',
+							Authorization: sessionToken
+						}
+					});
+					const userProfile = await userRequest.json();
+					setUser(userProfile);
+					setRoute('login');
+				}
+			} catch {
+				console.error('Please sign in');
+			}
+		}
+	};
+
+	checkSession();
 
 	return (
 		<div>
@@ -60,7 +114,7 @@ export const SignIn = ({ URL, route, setRoute, setUser }) => {
 									Email
 								</label>
 								<input
-									className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+									className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hvr-blk'
 									type='email'
 									name='email-address'
 									id='email-address'
@@ -72,7 +126,7 @@ export const SignIn = ({ URL, route, setRoute, setUser }) => {
 									Password
 								</label>
 								<input
-									className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+									className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hvr-blk'
 									type='password'
 									name='password'
 									id='password'

@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BoundingBox from '../bounding-box/bounding-box.component.jsx';
 import './face-detect.styles.scss';
 
 const FaceDetect = ({ imageURL, detectedFaces, error }) => {
-	const inputImage = document.querySelector('#face-detect-img');
+	const [boundingBoxes, setBoundingBoxes] = useState([]);
+
+	const createBoundingBoxes = () => {
+		setBoundingBoxes(
+			detectedFaces.map((face, idx) => <BoundingBox key={idx} face={face} />)
+		);
+	};
 
 	return imageURL && !error ? (
 		<div className='ma center'>
@@ -13,12 +19,9 @@ const FaceDetect = ({ imageURL, detectedFaces, error }) => {
 					className='ba br3 b--white shadow-3 animate__animated animate__bounceIn detect-img'
 					src={imageURL}
 					alt='face-detect'
+					onLoad={createBoundingBoxes}
 				/>
-				{inputImage && inputImage !== undefined
-					? detectedFaces.map((face, idx) => (
-							<BoundingBox key={idx} face={face} />
-					  ))
-					: null}
+				{boundingBoxes}
 			</div>
 		</div>
 	) : (

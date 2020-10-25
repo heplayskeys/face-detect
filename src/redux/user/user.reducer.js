@@ -18,6 +18,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
 				activeUser: action.payload
 			};
 
+		case UserActionTypes.UPDATE_NAME:
+			return {
+				...state,
+				activeUser: action.payload
+			};
+
 		default:
 			return state;
 	}

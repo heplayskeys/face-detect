@@ -4,28 +4,7 @@ exports[`<Navigation /> renders the navigation component successfully for home 1
 <nav
   className="flex justify-end"
 >
-  <div
-    className="user-icon tc grow pointer"
-  >
-    <p
-      className="flex items-center justify-center br-100 pa3 m0 ba b--white h3 w3 f2 shadow-3 grow"
-      style={
-        Object {
-          "background": "#000",
-          "color": "#fff",
-          "margin": 0,
-        }
-      }
-    >
-      E
-    </p>
-  </div>
-  <p
-    className="sign-out link dim black underline pa3 pointer"
-    onClick={[Function]}
-  >
-    Sign Out
-  </p>
+  <Connect(AvatarIcon) />
 </nav>
 `;
 
