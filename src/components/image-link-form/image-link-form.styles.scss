@@ -27,6 +27,12 @@ $breakpoint-tablet: 768px;
 	}
 }
 
+#file-upload-input {
+	@media screen and (max-width: $breakpoint-tablet) {
+		width: 100%;
+	}
+}
+
 .grab-btn {
 	@media screen and (max-width: $breakpoint-tablet) {
 		border-radius: 0 0.5rem 0.5rem 0;
