@@ -19,5 +19,6 @@ $breakpoint-phone: 450px;
 .display-image-container {
 	@media screen and (max-width: $breakpoint-phone) {
 		margin-top: 20px;
+		margin-bottom: 20px;
 	}
 }
