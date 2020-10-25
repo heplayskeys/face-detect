@@ -31,8 +31,6 @@ export const SignIn = ({ URL, route, setRoute, setUser }) => {
 			})
 		});
 
-		console.log(resp.status);
-
 		if (resp.status === 200) {
 			const userAuth = await resp.json();
 			const userAuthToken = userAuth.token ? userAuth.token : sessionToken;

@@ -38,7 +38,6 @@ const Profile = ({ activeUser, updateUserName }) => {
 		const data = await resp.json();
 
 		if (resp.status === 200) {
-			console.log(data);
 			updateUserName(activeUser, name);
 			alert('Name updated.');
 			document.querySelector('#name').value = '';
