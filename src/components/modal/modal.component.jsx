@@ -4,6 +4,14 @@ import Profile from '../user-profile/user-profile.component';
 import './modal.styles.scss';
 
 const ProfileModal = ({ toggleModal, modal }) => {
+	const logo = document.querySelector('.Tilt-inner');
+
+	if (screen.width <= 768 && modal) {
+		logo.style.visibility = 'hidden';
+	} else {
+		logo.style.visibility = 'visible';
+	}
+
 	return (
 		<div>
 			<div style={{ padding: '0.25rem 1.5rem' }} onClick={toggleModal}>

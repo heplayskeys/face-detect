@@ -101,10 +101,10 @@ export const ImageLinkForm = props => {
 								type='file'
 								accept='image/*'
 								onChange={event => setFile(event.target.files)}
-								style={{ overflow: 'hidden' }}
+								style={{ overflow: 'hidden', width: '100%' }}
 							/>
 							<button
-								className='grab-btn w-20-ns f4 grow link ph3 pv2 dib white mybg'
+								className='upload-btn w-20-ns f4 grow link ph3 pv2 dib white mybg'
 								onClick={e => handleUpload(e)}
 							>
 								{'upload'}

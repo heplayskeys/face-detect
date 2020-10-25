@@ -32,3 +32,9 @@ $breakpoint-tablet: 768px;
 		border-radius: 0 0.5rem 0.5rem 0;
 	}
 }
+
+.upload-btn {
+	@media screen and (max-width: $breakpoint-tablet) {
+		border-radius: 0.5rem;
+	}
+}
