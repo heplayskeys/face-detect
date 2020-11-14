@@ -6,7 +6,7 @@ const FaceCount = ({ numFaces, isPending }) => {
 			<h3>
 				{'I am able to grab '}
 				<span className='f2-ns f3 white'>{numFaces}</span>
-				{' faces from your image!'}
+				{`${numFaces === 1 ? ' face' : ' faces'} from your image!`}
 			</h3>
 		</div>
 	) : isPending ? (
